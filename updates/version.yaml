@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+    - v1.0.1/create_cards_table.php
+    - v1.0.1/create_columns_table.php
+    - v1.0.1/create_comments_table.php

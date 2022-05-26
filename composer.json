@@ -1,0 +1,21 @@
+{
+    "name": "webvpf/wn-todoboard-plugin",
+    "type": "winter-plugin",
+    "description": "ToDo Board - plugin for Winter CMS.",
+    "homepage": "https://github.com/WebVPF/wn-todoboard-plugin",
+    "keywords": ["winter cms", "wintercms", "wintercms-plugin", "todo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "WebVPF",
+            "role": "Author"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/WebVPF/wn-todoboard-plugin/issues",
+        "source": "https://github.com/WebVPF/wn-todoboard-plugin"
+    },
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
