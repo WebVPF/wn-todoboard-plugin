@@ -11,6 +11,7 @@
         'add_card' => 'Add Card',
         'cancel' => 'Cancel',
         'card_with_desc' => 'This card with a description',
+        'comments' => 'There are comments',
     ],
     'card' => [
         'description' => 'Description',

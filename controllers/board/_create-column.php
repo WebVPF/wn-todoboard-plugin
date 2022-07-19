@@ -1,5 +1,5 @@
 <div class="column-form-create">
-    <button id="open_form_add_column" type="button" class="btn btn-default icon-plus icon-sm">
+    <button id="open_form_add_column" type="button" class="btn btn-default icon-plus">
         <?= Lang::get('webvpf.todoboard::lang.board.create_new_list') ?>
     </button>
 

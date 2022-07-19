@@ -1,4 +1,4 @@
-<div class="column-card" 
+<div class="column-card"
     id="card-<?= $card->id ?>"
     tabindex="0"
     data-control="popup"
@@ -15,7 +15,7 @@
         <?php if ($card->desc): ?>
             <icon
                 class="wn-icon-align-left"
-                title="<?= Lang::get('webvpf.todoboard::lang.board.this_card_desc') ?>"
+                title="<?= Lang::get('webvpf.todoboard::lang.board.card_with_desc') ?>"
             >
             </icon>
         <?php endif ?>

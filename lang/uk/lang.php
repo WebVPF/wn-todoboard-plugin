@@ -11,6 +11,7 @@
         'add_card' => 'Додати картку',
         'cancel' => 'Скасувати',
         'card_with_desc' => 'Ця картка має опис',
+        'comments' => 'Є коментарі',
     ],
     'card' => [
         'description' => 'Опис',
