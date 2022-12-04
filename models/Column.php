@@ -18,11 +18,14 @@ class Column extends Model
     ];
 
     public $hasMany = [
-        'cards' => ['WebVPF\TodoBoard\Models\Card', 'softDelete' => true],
+        'cards' => [
+            \WebVPF\TodoBoard\Models\Card::class,
+            'softDelete' => true
+        ],
     ];
 
     // public function beforeSave() {
-        
+
     // }
 
     public function getCards() {
@@ -40,7 +43,7 @@ class Column extends Model
         $this->increment('count_cards');
         $this->timestamps = true;
     }
-    
+
     public function setCountCardsMinus()
     {
         $this->timestamps = false;

@@ -18,12 +18,12 @@ class Comment extends Model
     ];
 
     public $belongsTo = [
-        'card' => ['WebVPF\TodoBoard\Models\Card'],
-        'user' => ['Backend\Models\User'],
+        'card' => \WebVPF\TodoBoard\Models\Card::class,
+        'user' => \Backend\Models\User::class,
     ];
 
     public $attachMany = [
-        'images' => 'System\Models\File'
+        'images' => \System\Models\File::class
     ];
 
     public function afterCreate()

@@ -1,6 +1,7 @@
 <?php namespace WebVPF\TodoBoard\Models;
 
 use Model;
+use WebVPF\TodoBoard\Models\Column;
 
 class Card extends Model
 {
@@ -18,40 +19,40 @@ class Card extends Model
     ];
 
     public $hasMany = [
-        'comments' => ['WebVPF\TodoBoard\Models\Comment', 'softDelete' => true],
+        'comments' => [\WebVPF\TodoBoard\Models\Comment::class, 'softDelete' => true],
     ];
 
     public $belongsTo = [
-        'column' => ['WebVPF\TodoBoard\Models\Column'],
-        'user' => ['Backend\Models\User'],
+        'column' => \WebVPF\TodoBoard\Models\Column::class,
+        'user' => \Backend\Models\User::class,
     ];
 
     /**
      * Обложка карточки
      */
     public $attachOne = [
-        'cover' => ['System\Models\File', 'softDelete' => true],
+        'cover' => [\System\Models\File::class, 'softDelete' => true],
     ];
 
     /**
      * Прикреплые файлы к Описанию карточки (полю desc)
      */
     public $attachMany = [
-        'images' => 'System\Models\File'
+        'images' => \System\Models\File::class,
     ];
 
     public function afterCreate()
     {
-        $column = \WebVPF\TodoBoard\Models\Column::find($this->column_id);
+        $column = Column::find($this->column_id);
 
         $column->timestamps = false;
         $column->increment('count_cards');
         $column->timestamps = true;
     }
-    
+
     public function afterDelete()
     {
-        $column = \WebVPF\TodoBoard\Models\Column::find($this->column_id);
+        $column = Column::find($this->column_id);
 
         $column->timestamps = false;
         $column->decrement('count_cards');
@@ -65,20 +66,20 @@ class Card extends Model
 
     /**
      * Изменить колонку к которой относится карточка
-     * 
+     *
      * @param int $column_id - ID-новой колонки
      */
     public function setNewColumn($column_id)
     {
-        $column_old = \WebVPF\TodoBoard\Models\Column::find($this->column_id);
+        $column_old = Column::find($this->column_id);
         $column_old->setCountCardsMinus();
 
         $this->timestamps = false;
         $this->column_id = $column_id;
         $this->save();
         $this->timestamps = true;
-        
-        $column_new = \WebVPF\TodoBoard\Models\Column::find($column_id);
+
+        $column_new = Column::find($column_id);
         $column_new->setCountCardsPlus();
     }
 }
