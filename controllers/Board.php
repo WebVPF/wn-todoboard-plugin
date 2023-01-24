@@ -91,6 +91,19 @@ class Board extends Controller
     }
 
     /**
+     *
+     */
+    public function onDeleteComment() {
+        $comment = Comment::find( Input::get('comment_id') );
+        $comment->delete();
+
+        return [
+            'card_id' => $comment->card_id,
+            'card_count_comments' => $comment->card->count_comments,
+        ];
+    }
+
+    /**
      * Карточка в модальном окне
      * @return str
      */
@@ -160,7 +173,7 @@ class Board extends Controller
 
     /**
      * Сортировка карточек - перемещение карточки из одной колонки в другую
-     * 
+     *
      * - изменить родительскую колонку для перемещённой карточки
      * - число карточек минус
      * - число карточек плюс

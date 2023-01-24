@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 formAddColumn.querySelector('input[name="name"]').value = '';
             },
-            error: function(jqXHR, status) {                
+            error: function(jqXHR, status) {
 
             }
         })
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     document.querySelector(`#column-${ columnId } .column-footer textarea`).value = '';
                 }
-            });
+            })
         }
 
     });
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e.target);
 
         /**
-         * Редактирование названия колонки // TODO 
+         * Редактирование названия колонки // TODO
          */
         if ( e.target.classList.contains('column-name') ) {
             console.log(e.target.textContent);
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Переключение тёмная/светлая тема - плагин DarkBackend
      */
-     const callback = function(mutationsList, observer) {
+    const callback = function(mutationsList, observer) {
         for (let mutation of mutationsList) {
             if (mutation.type === 'attributes') {
                 let pathCSS = window.location.origin + '/plugins/webvpf/todoboard/assets/css/prism-',
@@ -164,3 +164,19 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(document.querySelector('body'), { attributes: true });
 
 });
+
+
+/**
+ * Переключение тёмной темы - DarkBackend
+ */
+// let pathCSS = window.location.origin + '/plugins/webvpf/todoboard/assets/css/prism-',
+//     linkCSS = document.querySelector(`link[href^="${ pathCSS }`),
+//     pluginVersion = linkCSS.getAttribute('href').split('?')[1];
+
+// document.addEventListener('modeDarkEnabled', () => {
+//     linkCSS.setAttribute('href', `${ pathCSS }tomorrow.css?${ pluginVersion }`);
+// });
+
+// document.addEventListener('modeDarkDisabled', () => {
+//     linkCSS.setAttribute('href', `${ pathCSS }solarizedlight.css?${ pluginVersion }`);
+// });

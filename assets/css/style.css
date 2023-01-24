@@ -160,9 +160,6 @@ textarea:focus {
     min-height: 22px;
     border-bottom: 1px solid #d0d7de;
 }
-.card-footer {
-	padding: 0 20px 20px;
-}
 .card-details {
     display: flex;
     flex-direction: row;
@@ -200,12 +197,20 @@ textarea:focus {
     background-color: #6495ed;
 }
 #btn_edit_desc::before {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 #field_card_desc {
-	min-height: 250px;
-	overflow:hidden;
+    min-height: 250px;
+    overflow:hidden;
+}
+.card-footer {
+    display: flex;
+    gap: 12px;
+    padding: 0 20px 20px;
+}
+.comment-form {
+    width: 100%;
 }
 
 
@@ -454,8 +459,8 @@ body.dark .card-desc {
     /* background-color: #222; */
 }
 body.dark #btn_edit_desc {
-    color: rgb(180, 180, 180);
-    background-color: #1e1e1e;
+    background-color: var(--drk-bg-color-fancy);
+    color: var(--drk-color);
 }
 body.dark .card a {
     color: #58a6ff;

@@ -1,4 +1,10 @@
-<?php $current_user = $comment->user->id === $this->user->id ? 'current-user' : '' ?>
+<?php
+
+$current_user = $comment->user->id === $this->user->id ? 'current-user' : '';
+
+
+
+?>
 
 <div class="comment <?= $current_user ?>" id="comment-<?= $comment->id ?>">
     <div class="comment-header">
@@ -20,12 +26,12 @@
 
             <ul class="dropdown-menu" role="menu">
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#" class="wn-icon-pencil">
+                    <a role="menuitem" tabindex="-1" href="#" class="wn-icon-pencil comment-edit" data-comment-id="<?= $comment->id ?>">
                         <?= Lang::get('webvpf.todoboard::lang.card.edit') ?>
                     </a>
                 </li>
                 <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#" class="wn-icon-trash">
+                    <a role="menuitem" tabindex="-1" href="#" class="wn-icon-trash comment-delete" data-comment-id="<?= $comment->id ?>">
                         <?= Lang::get('backend::lang.form.delete') ?>
                     </a>
                 </li>

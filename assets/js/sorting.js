@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
+
     document.querySelectorAll('.column-cards').forEach(columnCard => {
         new Sortable(columnCard, {
             group: 'cards',

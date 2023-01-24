@@ -1,9 +1,22 @@
 /**
- * Функция запускаемая при открытии модального окна с карточкой
+ * Модалка с карточкой
  */
-function cardInit() {
-    Prism.highlightAll();
-}
+var isOpenCard = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.oldValue == 'popup-backdrop fade in loading') {
+            Prism.highlightAll();
+        }
+    })
+});
+
+isOpenCard.observe(document.documentElement, {
+    attributes: true,
+    characterData: true,
+    childList: true,
+    subtree: true,
+    attributeOldValue: true,
+    characterDataOldValue: true
+});
 
 function highlightCode(selector) {
     document.querySelectorAll(`${selector} pre code`).forEach(el => Prism.highlightElement(el))
@@ -41,13 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         let cardCountComments = document.querySelector(`#card-${ cardId } .count-comments`);
 
                         if (cardCountComments) {
-                            cardCountComments.textContent = Number(cardCountComments.textContent) + 1; 
+                            cardCountComments.textContent = Number(cardCountComments.textContent) + 1;
                         }
                         else {
                             let count = document.createElement('span');
                             count.classList.add('wn-icon-comment-o', 'count-comments');
                             count.textContent = '1';
-                            
+
                             document.querySelector(`#card-${ cardId } .column-card-info`).append(count);
                         }
                     }
@@ -55,12 +68,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         }
+
+        /**
+         * Редактирование комментария карточки
+         */
+        else if (e.target.classList.contains('comment-edit')) {
+            console.log('редактировать комментарий');
+        }
+
+        /**
+         * Удалить комментарий
+         */
+        else if (e.target.classList.contains('comment-delete')) {
+            let id = e.target.dataset.commentId;
+
+            $.request('onDeleteComment', {
+                loading: $.wn.stripeLoadIndicator,
+                data: {
+                    comment_id: id
+                },
+                success: function(data) {
+                    // console.log(data);
+
+                    document.getElementById('comment-' + id).remove();
+
+                    let cardCountComments = document.querySelector(`#card-${ data['card_id'] } .count-comments`);
+                    if ( data['card_count_comments'] === 0 ) {
+                        cardCountComments.remove()
+                    }
+                    else {
+                        cardCountComments.textContent = data['card_count_comments']
+                    }
+                }
+            });
+        }
+
     })
 
     document.addEventListener('dblclick', (e) => {
 
         /**
-         * Редактирование названия карточки // TODO 
+         * Редактирование названия карточки // TODO
          */
         if (e.target.classList.contains('modal-title')) {
             let origName = e.target.textContent,

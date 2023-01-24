@@ -7,7 +7,6 @@
     data-handler="onGetCard"
     data-request-data="id: <?= $card->id ?>"
     data-keyboard="false"
-    data-request-complete="cardInit()"
 >
     <div class="column-card-title"><?= $card->title ?></div>
 
