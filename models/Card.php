@@ -1,4 +1,6 @@
-<?php namespace WebVPF\TodoBoard\Models;
+<?php
+
+namespace WebVPF\TodoBoard\Models;
 
 use Model;
 use WebVPF\TodoBoard\Models\Column;
@@ -11,6 +13,11 @@ class Card extends Model
     protected $dates = ['deleted_at'];
 
     public $table = 'webvpf_todoboard_cards';
+
+    /**
+     * @var array Behaviors implemented by this model class
+     */
+    public $implement = ['@LukeTowers.EasyAudit.Behaviors.TrackableModel'];
 
     /**
      * @var array Validation rules

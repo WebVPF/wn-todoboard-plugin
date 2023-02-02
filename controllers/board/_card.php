@@ -7,7 +7,7 @@
             <?= Lang::get('webvpf.todoboard::lang.card.on_the_list') ?> <strong><?= $card->column->name ?></strong>
         </div>
         <div>
-            <?= Lang::get('webvpf.todoboard::lang.card.added') ?> <?= $card->user->first_name ?> <?= Backend::dateTime($card->created_at, ['formatAlias' => 'dateTimeLongMin']) ?>
+            <?= Lang::get('webvpf.todoboard::lang.card.added') ?> <span class="card-author"><?= $card->user->first_name ?></span> <?= Backend::dateTime($card->created_at, ['formatAlias' => 'dateTimeLongMin']) ?>
         </div>
     </div>
 
