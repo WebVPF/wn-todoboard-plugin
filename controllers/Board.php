@@ -127,6 +127,7 @@ class Board extends Controller
         // $this->formWidget->previewMode = $this->previewMode;
 
         // return $this->formWidget;
+        // return $this->makePartial('_card-desc-form', $this->vars);
     }
 
     public function onSaveCardDesc() {
