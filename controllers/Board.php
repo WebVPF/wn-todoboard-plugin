@@ -2,10 +2,12 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
-use WebVPF\TodoBoard\Models\Column;
-use WebVPF\TodoBoard\Models\Card;
-use WebVPF\TodoBoard\Models\Comment;
 use Input;
+use Lang;
+use Markdown;
+use WebVPF\TodoBoard\Models\Card;
+use WebVPF\TodoBoard\Models\Column;
+use WebVPF\TodoBoard\Models\Comment;
 
 class Board extends Controller
 {
@@ -21,7 +23,7 @@ class Board extends Controller
         parent::__construct();
 
         BackendMenu::setContext('WebVPF.TodoBoard', 'todoboard');
-        $this->pageTitle = e('Доска задач');
+        $this->pageTitle = Lang::get('webvpf.todoboard::lang.board.task_board');
 
         $columns = Column::orderBy('sort_order', 'asc')->get();
         $this->vars['boardColumns'] = $columns;
@@ -70,7 +72,7 @@ class Board extends Controller
         $card->save();
         $card->timestamps = true;
 
-        return \Markdown::parse($card->desc);
+        return Markdown::parse($card->desc);
     }
 
     // public function onEditCardDesc() {

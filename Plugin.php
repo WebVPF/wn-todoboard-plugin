@@ -5,7 +5,7 @@ use Backend;
 
 class Plugin extends PluginBase
 {
-    public function pluginDetails()
+    public function pluginDetails(): array
     {
         return [
             'name'        => 'webvpf.todoboard::lang.plugin.name',
@@ -16,7 +16,7 @@ class Plugin extends PluginBase
         ];
     }
 
-    public function registerNavigation()
+    public function registerNavigation(): array
     {
         return [
             'todoboard' => [

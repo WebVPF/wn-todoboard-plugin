@@ -4,6 +4,7 @@
         'description' => 'Доска задач в бэкенде Winter CMS',
     ],
     'board' => [
+        'task_board' => 'Доска задач',
         'create_new_list' => 'Создать новый список',
         'add_list' => 'Добавить список',
         'placeholder_column_name' => 'Введите заголовок списка',

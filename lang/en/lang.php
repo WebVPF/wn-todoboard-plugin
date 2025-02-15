@@ -4,6 +4,7 @@
         'description' => 'ToDo board in backend Winter CMS',
     ],
     'board' => [
+        'task_board' => 'Task Board',
         'create_new_list' => 'Create new List',
         'add_list' => 'Add List',
         'placeholder_column_name' => 'Enter list title',
